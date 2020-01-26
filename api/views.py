@@ -13,17 +13,9 @@ URL_ACTIONS = {
 }
 
 
-def get_or_create_ips(request):
-    return IP_ACTIONS[request.method](request.query_params.get('ip_address'))
+async def ip_object_handler(request):
+    return await IP_ACTIONS[request.method](request.path_params.get('ip_address'))
 
 
-def ip_object_handler(request):
-    return IP_ACTIONS[request.method](request.query_params.get('ip_address'))
-
-
-def get_or_create_urls(request):
-    return URL_ACTIONS[request.method](request.query_params.get('url_address'))
-
-
-def url_object_handler(request):
-    return URL_ACTIONS[request.method](request.query_params.get('url_address'))
+async def url_object_handler(request):
+    return await URL_ACTIONS[request.method](request.path_params.get('url_address'))

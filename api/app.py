@@ -6,7 +6,7 @@ from api.routes import ROUTES
 
 app = Starlette(
     routes=[
-        Mount('/v1', routes=ROUTES),
+        Mount('/', routes=ROUTES),
     ],
     on_startup=[database.connect],
     on_shutdown=[database.disconnect]
